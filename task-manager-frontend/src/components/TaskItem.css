@@ -1,0 +1,333 @@
+/* src/components/TaskItem.css */
+.task-item {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    box-sizing: border-box;
+    flex-direction: row; /* Por defecto en escritorio/tablet */
+    flex-wrap: wrap; /* Permitir que los elementos se envuelvan si no caben */
+    justify-content: space-between; /* Distribuye espacio entre elementos principales */
+  }
+  
+  .task-item.completed {
+    background-color: #e9ecef;
+    border-color: #dee2e6;
+    color: #6c757d;
+  }
+  
+  .task-item.completed .task-details-view h3,
+  .task-item.completed .task-details-view p {
+      color: #6c757d;
+  }
+  
+  /* Ocultar visualmente el checkbox, pero mantenerlo en el DOM si es necesario para accesibilidad o futura funcionalidad */
+  .task-item input[type="checkbox"] {
+       width: 0;
+       height: 0;
+       margin: 0;
+       padding: 0;
+       border: none;
+       overflow: hidden;
+       visibility: hidden;
+       pointer-events: none;
+       position: absolute; /* Posicionarlo absolutamente para que no afecte el layout */
+       left: -9999px; /* Moverlo fuera de la pantalla */
+  }
+  
+  
+  .task-details-view {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    /* Permitir que los detalles ocupen el espacio principal, pero con un ancho mínimo */
+    flex-basis: 0; /* Base de 0 para que flex-grow funcione bien */
+    min-width: 150px; /* Ancho mínimo para que el texto no se comprima demasiado */
+  }
+  
+  .task-details-view h3 {
+    margin: 0;
+    font-size: 1.1em;
+    color: #333;
+  }
+  
+  .task-item.completed .task-details-view h3 {
+      color: #6c757d;
+  }
+  
+  .task-details-view p {
+    margin: 0;
+    font-size: 0.9em;
+    color: #555;
+  }
+  
+  .task-meta { /* Contenedor para prioridad, fecha y estado */
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-top: 5px;
+      font-size: 0.8em;
+      color: #777;
+      flex-wrap: wrap; /* Permitir que los elementos meta también se envuelvan */
+      /* Asegurar que la meta-información se muestre debajo de los detalles en móvil */
+       width: 100%; /* Ocupa todo el ancho disponible en la fila */
+       order: 3; /* Ordenar para que aparezca después de detalles y botones en la fila principal */
+       justify-content: flex-start; /* Alinear a la izquierda */
+  }
+  
+  .priority-tag {
+      padding: 3px 8px;
+      border-radius: 12px;
+      color: white;
+      font-weight: bold;
+      font-size: 0.8em;
+      &.low { background-color: #28a745; }
+      &.medium { background-color: #ffc107; color: #333; }
+      &.high { background-color: #dc3545; }
+  }
+  
+  .created-date {
+       font-style: italic;
+       color: #777;
+  }
+  
+  /* Estilos para el toggle de descripción "Ver más"/"Ver menos" */
+  .toggle-description {
+      color: #007bff;
+      cursor: pointer;
+      margin-left: 5px;
+      font-weight: bold;
+  }
+  
+  .toggle-description:hover {
+      text-decoration: underline;
+  }
+  
+  
+  .action-buttons { /* Contenedor para botones de Editar y Eliminar */
+      display: flex;
+      gap: 10px;
+      flex-shrink: 0;
+      /* Asegurar que los botones se mantengan a la derecha o se muevan a una nueva línea */
+      margin-left: auto; /* Empuja los botones a la derecha cuando hay espacio */
+      align-items: center; /* Alinear los botones verticalmente */
+      order: 2; /* Ordenar para que aparezca después de detalles pero antes de meta en la fila principal */
+  }
+  
+  .edit-button, .delete-button {
+      border: none;
+      padding: 8px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.9em;
+      transition: background-color 0.3s ease;
+      line-height: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+  }
+  
+  .edit-button {
+      background-color: #6c757d;
+      color: white;
+  }
+  
+  .edit-button:hover {
+      background-color: #5a6268;
+  }
+  
+  .delete-button {
+      background-color: #dc3545;
+      color: white;
+  }
+  
+  .delete-button:hover {
+      background-color: #c82333;
+  }
+  
+  
+  /* --- Estilos del Modo Edición --- */
+  /* Cuando está en modo edición, el task-item cambia a dirección de columna */
+  .task-item.is-editing { /* Añadiremos esta clase dinámicamente en TaskItem.jsx */
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px; /* Ajustar gap en columna */
+  }
+  
+  
+  .task-item .edit-form-container {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+  }
+  
+  .edit-form-container h3 {
+       margin-top: 0;
+       margin-bottom: 15px;
+       font-size: 1.2em;
+       text-align: center;
+       color: #333;
+   }
+  
+  
+  .edit-form-container div {
+      margin-bottom: 10px;
+  }
+  
+  .edit-form-container label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+      font-size: 0.9em;
+      color: #555;
+  }
+  
+  .edit-form-container input[type="text"],
+  .edit-form-container textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      transition: border-color 0.2s ease-in-out;
+      resize: none; /* Deshabilitar redimensionamiento */
+  }
+  
+   .edit-form-container input[type="text"]:focus,
+   .edit-form-container textarea:focus {
+       outline: none;
+       border-color: #007bff;
+       box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+   }
+  
+  .edit-form-container textarea {
+      min-height: 80px;
+  }
+  
+  .edit-form-container .priority-selector {
+       width: 100%;
+       margin-bottom: 10px;
+  }
+  
+  .edit-form-container .edit-buttons {
+      display: flex;
+      gap: 10px;
+      justify-content: flex-end;
+      margin-top: 10px;
+      width: 100%;
+
+  }
+  
+   .edit-form-container .edit-buttons button {
+        padding: 8px 15px;
+        border: 1px solid #ccc;
+        border-radius: 20px;
+        cursor: pointer;
+        font-size: 0.9em;
+        transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+        background-color: #eee;
+        color: #333;
+   }
+  
+   .edit-form-container .edit-buttons .save-button {
+       background-color: #007bff;
+       color: white;
+
+       border-color: white
+   }
+  
+    .edit-form-container .edit-buttons .save-button:hover:not(:disabled) {
+        color:  #007bff;
+        background-color: white;
+        border-color:  #007bff;
+    }
+  
+     .edit-form-container .edit-buttons .save-button:disabled {
+         opacity: 0.6;
+         cursor: not-allowed;
+         background-color: #28a745;
+         display: none;
+
+
+     }
+  
+  
+   .edit-form-container .edit-buttons .cancel-button {
+       background-color: #6c757d;
+       color: white;
+       border-color: #6c757d;
+   }
+  
+    .edit-form-container .edit-buttons .cancel-button:hover {
+         background-color: #5a6268;
+         border-color: #545b62;
+    }
+  
+  /* Estilos para los botones de acción (Editar/Eliminar) fuera del modo edición */
+  /* Asegurar que mantengan su posición a la derecha */
+   .task-item .action-buttons {
+       display: flex;
+       gap: 10px;
+       flex-shrink: 0;
+       margin-left: auto;
+       align-items: center;
+       order: 2; /* Asegurar que estén después de los detalles */
+   }
+  
+   /* --- Media Query para pantallas pequeñas (ej. móviles) --- */
+   @media (max-width: 600px) { /* Puedes ajustar este breakpoint (600px) */
+      .task-item {
+          flex-direction: column; /* Apilar elementos verticalmente */
+          align-items: flex-start; /* Alinear elementos a la izquierda */
+          gap: 10px; /* Reducir gap */
+      }
+  
+      .task-details-view {
+          width: 100%; /* Ocupa todo el ancho */
+          min-width: auto; /* Eliminar ancho mínimo */
+          flex-basis: auto; /* Eliminar base flex */
+      }
+  
+      .task-meta {
+          flex-direction: column; /* Apilar elementos meta verticalmente */
+          align-items: flex-start; /* Alinear meta a la izquierda */
+          gap: 5px; /* Reducir gap entre elementos meta */
+          margin-top: 10px; /* Más espacio arriba */
+          width: 100%; /* Ocupa todo el ancho */
+          order: 3; /* Se mantiene al final */
+      }
+  
+      .priority-tag, .created-date, .task-status-toggle {
+          /* Asegurar que los elementos meta se muestren bien apilados */
+          margin-right: 0; /* Eliminar margen derecho si existe */
+      }
+  
+      .action-buttons {
+          width: 100%; /* Ocupa todo el ancho */
+          justify-content: flex-end; /* Alinea los botones a la derecha */
+          margin-left: 0; /* Eliminar margen automático */
+          margin-top: 10px; /* Añadir espacio arriba */
+          order: 2; /* Se mantiene en su orden */
+      }
+  
+      /* Ajustes en modo edición para móvil */
+       .task-item.is-editing {
+           gap: 10px; /* Asegurar gap consistente */
+       }
+  
+       .edit-form-container .edit-buttons {
+           flex-direction: row-reverse; /* Mantener Cancelar a la izquierda, Guardar a la derecha */
+           justify-content: flex-end; /* Alinear a la derecha */
+           width: 100%; /* Ocupar todo el ancho */
+       }
+  
+   }
+  

@@ -1,0 +1,77 @@
+/* src/components/TaskForm.css */
+.task-form {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    /* Añadir para que ocupe el 100% del ancho de su padre (app-container) */
+    width: 100%;
+    box-sizing: border-box; /* Asegura que padding y borde no aumenten el ancho */
+  }
+  
+  .task-form h3 { /* Añadir estilos para el título del formulario */
+      margin-top: 0;
+      margin-bottom: 20px;
+      text-align: center;
+      color: #333;
+  }
+  
+  .task-form div {
+    margin-bottom: 15px;
+  }
+  
+  .task-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555; /* Color de etiqueta */
+  }
+  
+  .task-form input[type="text"],
+  .task-form textarea {
+    width: 100%;
+    padding: 10px; /* Aumentar un poco el padding */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 1em;
+    transition: border-color 0.2s ease-in-out; /* Transición para foco */
+    
+  }
+  
+   .task-form input[type="text"]:focus,
+   .task-form textarea:focus {
+       outline: none; /* Eliminar el outline por defecto */
+       border-color: #007bff; /* Borde azul al enfocar */
+       box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Sombra suave al enfocar */
+   }
+  
+  
+  .task-form textarea {
+      resize: vertical;
+      resize: none;
+      min-height: 120px;
+  }
+  
+  .task-form button[type="submit"] { /* Estilo más específico para el botón de submit */
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px; /* Aumentar padding */
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+    width: 100%; /* Hacer que el botón ocupe todo el ancho */
+    margin-top: 10px; /* Espacio superior */
+  }
+  
+  .task-form button[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Asegurar que el selector de prioridad se alinee bien */
+   .task-form .priority-selector {
+       width: 100%;
+   }

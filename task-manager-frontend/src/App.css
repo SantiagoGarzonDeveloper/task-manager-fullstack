@@ -1,0 +1,106 @@
+/* src/App.css */
+.app-container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 30px; /* Aumentar un poco el padding */
+  background-color: #fff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra más definida */
+  border-radius: 8px;
+}
+
+.app-container h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 30px; /* Más espacio debajo del título principal */
+  font-size: 2em; /* Tamaño de fuente más grande */
+  border-bottom: 1px solid #eee; /* Línea sutil debajo del título */
+  padding-bottom: 15px;
+}
+
+.error-message {
+  color: #d32f2f;
+  background-color: #ffebee;
+  border: 1px solid #ef9a9a;
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 15px;
+  text-align: center;
+}
+.filter-sort-section {
+  background-color: #f8f9fa;
+  border: 1px solid #e9ecef;
+  padding: 15px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.filter-sort-section h3 {
+  width: 100%;
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 1.1em;
+  color: #555;
+  border-bottom: 1px dashed #ccc;
+  padding-bottom: 10px;
+}
+
+.filter-sort-section input[type="text"],
+.filter-sort-section select,
+.filter-sort-section input[type="date"] {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 0.9em;
+  /* Asegurar que los inputs y selects ocupen el ancho adecuado */
+  flex-grow: 1; /* Permitir que se expandan */
+  min-width: 150px; /* Ancho mínimo */
+}
+
+.filter-sort-section input[type="text"] {
+  flex-grow: 2; /* Darle más prioridad al input de texto para expandirse */
+  min-width: 200px; /* Aumentar ancho mínimo */
+}
+
+.filter-sort-section button {
+  padding: 8px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9em;
+  transition: background-color 0.3s ease;
+  background-color: #6c757d;
+  color: white;
+}
+
+.filter-sort-section button:hover {
+  background-color: #5a6268;
+}
+
+/* --- Media Query para pantallas pequeñas (ej. móviles) --- */
+@media (max-width: 600px) { /* Usar el mismo breakpoint que en TaskItem.css */
+  .filter-sort-section {
+      flex-direction: column; /* Apilar elementos verticalmente */
+      align-items: stretch; /* Estirar elementos para que ocupen todo el ancho */
+      gap: 10px; /* Espacio entre elementos apilados */
+  }
+
+  .filter-sort-section input[type="text"],
+  .filter-sort-section select,
+  .filter-sort-section input[type="date"],
+  .filter-sort-section button {
+      width: 100%; /* Hacer que cada elemento ocupe todo el ancho */
+      min-width: auto; /* Eliminar ancho mínimo */
+      flex-grow: 0; /* No permitir que crezcan más allá del 100% */
+      box-sizing: border-box; /* Incluir padding/border en el ancho */
+  }
+
+  .filter-sort-section h3 {
+      text-align: left; /* Alinear título a la izquierda en móvil */
+      padding-bottom: 5px; /* Reducir padding */
+      margin-bottom: 10px;
+  }
+}

@@ -1,0 +1,21 @@
+/* src/index.css */
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif; /* Fuente un poco más común y limpia */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f8f9fa; /* Fondo muy claro */
+  padding: 20px;
+  line-height: 1.6; /* Mejorar legibilidad */
+  color: #333; /* Color de texto general */
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+ /* Estilo básico para botones en general si no tienen un estilo específico */
+ button {
+     font-family: 'Arial', sans-serif; /* Usar la misma fuente */
+ }

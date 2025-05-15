@@ -1,0 +1,54 @@
+/* src/components/PrioritySelector.css */
+.priority-selector {
+    margin-bottom: 15px;
+  }
+  
+  .priority-selector label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+  }
+  
+  .priority-buttons {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  
+  .priority-button {
+    padding: 8px 15px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    /* Estilo por defecto (no seleccionado) */
+    background-color: #eee; /* Fondo gris claro */
+    color: #333; /* Texto negro oscuro */
+    border-color: #ccc; /* Borde gris */
+  }
+  
+  /* Estilos para el botón seleccionado */
+  .priority-button.selected {
+    background-color: #495057; /* Fondo gris oscuro (un color común tipo charcoal) */
+    color: white; /* Texto blanco */
+    border-color: #495057; /* Borde igual que el fondo */
+  }
+  
+
+  .priority-button.selected.low {  border-color: #218838; }
+  .priority-button.selected.medium {  border-color: #d6b200; }
+  .priority-button.selected.high {  border-color: #c82333; }
+  
+   
+  
+  .priority-button:hover:not(.selected) {
+      background-color: #ddd;
+      border-color: #bbb;
+  }
+  
+   .priority-button:focus {
+       outline: none;
+       box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+   }
