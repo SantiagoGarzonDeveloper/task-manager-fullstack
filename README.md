@@ -16,13 +16,9 @@ Este proyecto es una aplicación web completa (Full-Stack) para gestionar tareas
 
 * **Toggle de Estado:** Cambia visualmente el estado de una tarea entre "En Progreso" y "Completada".
 
-* **Arrastrar y Soltar (Drag and Drop):** Reordena las tareas en la lista arrastrándolas con el cursor.
-
 * **Búsqueda y Filtrado:** Busca tareas por título o descripción, y filtra por prioridad y estado.
 
 * **Persistencia Local:** Las tareas se guardan automáticamente en el `localStorage` del navegador, persistiendo entre sesiones.
-
-* **Notificaciones Toast:** Recibe mensajes emergentes (toasts) para confirmar operaciones exitosas o mostrar errores.
 
 * **Diseño Responsivo:** Interfaz adaptada para verse y funcionar bien en diferentes tamaños de pantalla (escritorio, tablet, móvil).
 
